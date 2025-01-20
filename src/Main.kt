@@ -34,6 +34,7 @@ fun main(){
 
         if (!estadoPalabra.contains('*')){
             println("Felicidades! Has acertado la palabra")
+            break
         }
     }
 }
