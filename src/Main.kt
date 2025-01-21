@@ -1,13 +1,15 @@
 fun main(){
+    val musica = "pugnodollari.mid"
+    val reproductor = ReproductorMidi(musica)
     val animales = listOf("Perro", "Gato", "Conejo", "Oso", "Tigre", "Jirafa", "Elefante", "Mono", "Cebra")
     println("Bienvenido al juego del ahorcado: ")
     val palabra = animales.random().lowercase()
     val estadoPalabra = MutableList(palabra.length) { '*' }
-    var intentos = 7
-    println("Adivina el animal. Tienes $intentos intentos")
+    var intentos = 0
+    println("Adivina el animal. Te quedan 7 intentos")
     println(estadoPalabra.joinToString(""))
 
-    while (intentos>0){
+    while (intentos<7){
         println("Introduce una letra: ")
         val letra = readln()
 
@@ -19,9 +21,11 @@ fun main(){
                 }
             }
         } else{
+            intentos++
+            var dibujo=DibujoAhorcado.dibujar(intentos)
+            println(dibujo)
             println("La letra $letra no está en la palabra")
-            intentos--
-            if (intentos==0) {
+            if (intentos==7) {
                 println("Has agotado todos tus intentos")
                 break
             }
@@ -29,7 +33,7 @@ fun main(){
 
 
 
-        println("Adivina el animal. Tienes $intentos intentos")
+        println("Adivina el animal. Tienes " + (7-intentos) + " intentos")
         println(estadoPalabra.joinToString(""))
 
         if (('*') !in estadoPalabra){
@@ -37,4 +41,5 @@ fun main(){
             break
         }
     }
+    reproductor.cerrar()
 }
