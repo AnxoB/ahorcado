@@ -11,7 +11,7 @@ fun main(){
         println("Introduce una letra: ")
         val letra = readln()
 
-        if (palabra.contains(letra)){
+        if (letra in palabra){
             println("Correcto! La letra $letra está en la palabra")
             for (i in palabra.indices) {
                 if (palabra[i].toString() == letra) {
@@ -32,7 +32,7 @@ fun main(){
         println("Adivina el animal. Tienes $intentos intentos")
         println(estadoPalabra.joinToString(""))
 
-        if (!estadoPalabra.contains('*')){
+        if (('*') !in estadoPalabra){
             println("Felicidades! Has acertado la palabra")
             break
         }
